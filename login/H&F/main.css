@@ -1,0 +1,262 @@
+  
+	:root{
+        --dark-color:#19283f;
+        --green-color:#33d1cc;
+        --red-color:#ff3150;
+        --yellow-color:#ffc400;
+        --section-color:#eff7fa;
+    }
+    body{
+        font-family: 'Roboto', sans-serif;
+    }
+    #logo{
+        color: var(--green-color);
+        font-weight: bold;
+        font-size: 20px;
+        text-decoration: none;
+    }
+    .navbar{
+        background-color: var(--dark-color);
+    }
+    .navbar .navbar-nav .nav-link{
+        color: white;
+    }
+    .navbar .navbar-nav .nav-link.active,
+    .navbar .navbar-nav .nav-link:hover,
+    .navbar .navbar-nav .nav-link:focus{
+        color: var(--green-color);
+    }
+    .search{
+        color: var(--green-color);
+        border-left: 1px solid var(--green-color);
+    }
+    .navbar .container .navbar-toggler{
+        border-color: white;
+        font-size: 25px;
+        color: white;
+    
+    }
+    .navbar .container .navbar-toggler:hover{
+        color: var(--green-color);
+        border-color: var(--green-color);
+    }
+    
+    .navbar-toggler:focus{
+        box-shadow: none;
+    }
+    .navbar .btn{
+        color: var(--yellow-color);
+        background: var(--red-color);
+        border: none;
+    }
+    .navbar .btn:focus,
+    .landing .btn:focus{
+        box-shadow: none;
+        color: var(--dark-color);
+        background-color: var(--green-color);
+    }
+    .landing{
+        min-height:calc(100vh - 72px);
+        background-color: var(--dark-color);
+    }
+    .features .container .main-title{
+        margin-bottom: 300px;
+    }
+    .container .main-title .icon{
+        color: var(--yellow-color);
+        font-size: 55px;
+        margin-bottom: 20px;
+    }
+    
+    
+    .container .main-title::after{
+        content: "";
+        background-color: var(--yellow-color);
+        width:120px;
+        height: 2px;
+        position: absolute;
+        bottom: -25px;
+        left: 50%;
+        transform: translateX(-50%);
+        
+    }
+    .features .feat{
+        height: 400px;
+        width: 30%;
+        margin: 0 20px;
+    }
+    @media (max-width: 768px){
+        .features .feat{
+            width: 300px;
+        }
+    }
+    @media (max-width: 992px){
+        .features .feat{
+            margin: 0 40px;
+        }
+    }
+    .number{
+        color: var(--section-color);
+        font-size: 200px;
+        top: -200px;
+        left: 50%;
+        transform: translateX(-50%);
+    
+    }
+    .flex-use{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .features .feat .icon{
+        color: var(--green-color);
+        font-size: 50px;
+        top: -70px;
+        left: 50%;
+        transform: translate(-50%);
+    }
+    .feat h3{
+        color: var(--yellow-color);
+        text-transform: uppercase;
+    }
+    .our-work ul .active{
+        background-color: var(--red-color);
+        color: var(--yellow-color);
+    }
+    .our-work ul li{
+        padding: 0.5rem 1rem;
+        
+        cursor: pointer;
+    }
+    .our-work ul li:not(.active):hover{
+        color: var(--red-color);
+    }
+    .our-work .row .box::after{
+        content: attr(data-work);
+        position: absolute;
+        background-color: #33d1cc7a;
+        color: var(--section-color);
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 27px;
+        font-weight: bolder;
+        transform: translateX(calc(-100% - 5px));
+        transition: 0.5s ease;
+    }
+    .our-work .row .box:hover::after{
+    transform: translateX(0);
+    }
+    .our-work .row .box{
+        padding: 5px;
+        position: relative;
+        overflow: hidden;
+    }
+    .our-work .container .main-title{
+        margin-bottom: 100px;
+    }
+    .my-btn{
+        color: var(--yellow-color);
+        background-color: var(--red-color);
+        border: none;
+        transition: 0.3s ease;
+        text-decoration: none;
+    }
+    .my-btn:focus{
+    box-shadow: none;
+    color: var(--dark-color);
+    background-color: var(--green-color);
+    }
+    .my-btn:hover{
+        color: var(--dark-color);
+        background-color: var(--green-color);
+    }
+    .under-line{
+        margin-top: 40px;
+        margin-bottom: 30px;
+        max-width: 500px;
+    }
+    .meet-team .container .main-title{
+        margin-bottom: 100px;
+    }
+    .meet-team .main-text{
+        color: var(--yellow-color);
+    
+    }
+    
+    .meet-team .content .text{
+        color: var(--section-color);
+        background-color: var(--green-color);
+        padding: 3px;
+        width: 100%;
+        top: -30px;
+        font-size: 20px;
+    }
+    .project {
+        background-color: var(--dark-color);
+    }
+    .row>* {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .subscribe{
+        background-color: var(--yellow-color);
+    }
+    .emailMe{
+        border: none;
+        background: rgba(0, 0, 0, 0);
+        border-bottom: var(--section-color) solid 1px;
+        padding-left: 5px;
+        color: var(--section-color);
+    }
+    .emailMe::placeholder{
+        color: var(--section-color);
+    }
+    .emailMe:focus{
+       outline: none;
+       font-weight: 500;
+       
+    }
+    .my-btn2{
+        color: var(--yellow-color);
+        background-color: var(--dark-color);
+        margin: 0 0 10px 33px;
+        font-weight: 600;
+    }
+    .my-btn2:hover{
+        color: var(--section-color);
+    }
+    .footer{
+        background-color: var(--dark-color);
+    }
+    .span1{
+        color: var(--green-color);
+    
+    }
+    .span2{
+        color: var(--yellow-color);
+    }
+    .content-links p a{
+        text-decoration: none;
+    }
+    .my-btn3{
+        color: var(--yellow-color);
+        background-color: var(--red-color);
+        border: none;
+        padding: 5px 20px;
+        transition: 0.3s ease;
+        text-decoration: none;
+    }
+    .my-btn3:focus{
+    box-shadow: none;
+    color: var(--dark-color);
+    background-color: var(--red-color);
+    }
+    .my-btn3:hover{
+        color: var(--dark-color);
+        background-color: var(--red-color);
+    }
