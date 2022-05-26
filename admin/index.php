@@ -7,10 +7,14 @@
 $statementUnique=$pdo->prepare("SELECT * FROM unique_visitors");
 $statementUnique->execute();
 $webVisits=$statementUnique->fetchAll(PDO::FETCH_ASSOC);
- // users link
+ // users length link
 $statementUsers=$pdo->prepare("SELECT * FROM users");
 $statementUsers->execute();
 $users=$statementUsers->fetchAll(PDO::FETCH_ASSOC);
+ // users last link
+ $statementLast=$pdo->prepare("SELECT * FROM users ORDER BY user_id DESC LIMIT 3");
+ $statementLast->execute();
+ $lasts=$statementLast->fetchAll(PDO::FETCH_ASSOC);
  // Products link
 $statementProducts=$pdo->prepare("SELECT * FROM products");
 $statementProducts->execute();
@@ -23,6 +27,10 @@ $categories=$statementCategories->fetchAll(PDO::FETCH_ASSOC);
  $statementAdmins=$pdo->prepare("SELECT * FROM categories");
  $statementAdmins->execute();
  $admins=$statementAdmins->fetchAll(PDO::FETCH_ASSOC);
+ // comments link
+ $statementComments=$pdo->prepare("SELECT * FROM comments ORDER BY comment_id DESC LIMIT 2");
+ $statementComments->execute();
+ $comments=$statementComments->fetchAll(PDO::FETCH_ASSOC);
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -93,6 +101,13 @@ $categories=$statementCategories->fetchAll(PDO::FETCH_ASSOC);
                 <a href="./categorys/public/index.php" class='sidebar-link'>
                     <i class="bi bi-blockquote-left"></i>
                     <span>Categories</span>
+                </a>
+            </li>
+            <li
+                class="sidebar-item">
+                <a href="./orders.php" class='sidebar-link'>
+                    <i class="bi bi-archive"></i>
+                    <span>Orders</span>
                 </a>
             </li>
             <li
@@ -195,7 +210,7 @@ $categories=$statementCategories->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             </div>
             <!-- visitors diagram not finished //start-->
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
@@ -206,10 +221,11 @@ $categories=$statementCategories->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
              <!-- visitors diagram not finished //end-->
             <div class="row">
-                <div class="col-12 col-xl-4">
+                <!-- profile reagan start -->
+                <!-- <div class="col-12 col-xl-4">
                     <div class="card">
                         <div class="card-header">
                             <h4>Profile Visit</h4>
@@ -229,9 +245,9 @@ $categories=$statementCategories->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="col-6">
                                     <h5 class="mb-0">862</h5>
                                 </div>
-                                <!-- <div class="col-12">
+                                 <div class="col-12">
                                     <div id="chart-europe"></div>
-                                </div> -->
+                                </div> 
                             </div>
                             <div class="row my-2">
                                 <div class="col-6">
@@ -247,9 +263,9 @@ $categories=$statementCategories->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="col-6">
                                     <h5 class="mb-0">375</h5>
                                 </div>
-                                <!-- <div class="col-12">
+                                 <div class="col-12">
                                     <div id="chart-america"></div>
-                                </div> -->
+                                </div> 
                             </div>
                             <div class="row my-2">
                                 <div class="col-6">
@@ -265,19 +281,19 @@ $categories=$statementCategories->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="col-6">
                                     <h5 class="mb-0">1025</h5>
                                 </div>
-                                <!-- <div class="col-12">
+                                 <div class="col-12">
                                     <div id="chart-indonesia"></div>
-                                </div> -->
+                                </div> 
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="col-12 col-xl-8">
                     <div class="card">
                         <div class="card-header">
                             <h4>Latest Comments</h4>
                         </div>
-                        <!-- comments section end -->
+                        <!-- comments section start -->
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-hover table-lg">
@@ -288,34 +304,21 @@ $categories=$statementCategories->fetchAll(PDO::FETCH_ASSOC);
                                         </tr>
                                     </thead>
                                     <tbody>
-
-                                        <tr>
-                                            <td class="col-3">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="avatar avatar-md">
-                                                        <img src="assets/images/faces/5.jpg">
-                                                    </div>
-                                                    <p class="font-bold ms-3 mb-0">Si Cantik</p>
-                                                </div>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0">Congratulations on your graduation!</p>
-                                            </td>
-                                        </tr>
+                                    <?php foreach($comments as $comment){ ?>
                                         <tr>
                                             <td class="col-3">
                                                 <div class="d-flex align-items-center">
                                                     <div class="avatar avatar-md">
                                                         <img src="assets/images/faces/2.jpg">
                                                     </div>
-                                                    <p class="font-bold ms-3 mb-0">Si Ganteng</p>
+                                                    <p class="font-bold ms-3 mb-0"><?php echo $comment['comment_name'] ?></p>
                                                 </div>
                                             </td>
                                             <td class="col-auto">
-                                                <p class=" mb-0">Wow amazing design! Can you make another tutorial for
-                                                    this design?</p>
+                                                <p class=" mb-0"><?php echo $comment['comment'] ?></p>
                                             </td>
                                         </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -341,49 +344,34 @@ $categories=$statementCategories->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <div class="card">
                 <div class="card-header">
-                    <h4>Recent Messages</h4>
+                    <h4>Recent Users</h4>
                 </div>
                 <div class="card-content pb-4">
-                    <div class="recent-message d-flex px-4 py-3">
+                    <?php foreach($lasts as $last){ ?>
+                        <div class="recent-message d-flex px-4 py-3">
                         <div class="avatar avatar-lg">
-                            <img src="assets/images/faces/4.jpg">
+                            <img src="assets/images/faces/2.jpg">
                         </div>
                         <div class="name ms-4">
-                            <h5 class="mb-1">Hank Schrader</h5>
-                            <h6 class="text-muted mb-0">@johnducky</h6>
+                            <h5 class="mb-1"><?php echo $last['user_name'] ?></h5>
+                            <h6 class="text-muted mb-0"><?php echo $last['user_email'] ?></h6>
                         </div>
                     </div>
-                    <div class="recent-message d-flex px-4 py-3">
-                        <div class="avatar avatar-lg">
-                            <img src="assets/images/faces/5.jpg">
-                        </div>
-                        <div class="name ms-4">
-                            <h5 class="mb-1">Dean Winchester</h5>
-                            <h6 class="text-muted mb-0">@imdean</h6>
-                        </div>
-                    </div>
-                    <div class="recent-message d-flex px-4 py-3">
-                        <div class="avatar avatar-lg">
-                            <img src="assets/images/faces/1.jpg">
-                        </div>
-                        <div class="name ms-4">
-                            <h5 class="mb-1">John Dodol</h5>
-                            <h6 class="text-muted mb-0">@dodoljohn</h6>
-                        </div>
-                    </div>
+                    <?php } ?>
+                    
                     <div class="px-4">
                         <button class='btn btn-block btn-xl btn-outline-primary font-bold mt-3'>Start Conversation</button>
                     </div>
                 </div>
             </div>
-            <div class="card">
+            <!-- <div class="card">
                 <div class="card-header">
                     <h4>Visitors Profile</h4>
                 </div>
                 <div class="card-body">
                     <div id="chart-visitors-profile"></div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
 </div>

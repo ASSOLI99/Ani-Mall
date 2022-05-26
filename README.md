@@ -1,4 +1,0 @@
-# LOADING... Ani-Mall
-HTML, CSS, JS, Bootstrap5 , PHP, MySQL
-# Template
-https://miro.com/welcomeonboard/TEE5ZnNiOXB1OHdPVzRVR25raVozVzBkbTJHRm9EZk55dzdDcWZFTWU2Y2ZPd0ZCSDQ5R003ZVJGRjRvaEZ1SHwzNDU4NzY0NTE5NTcyMjI2NDI3?share_link_id=269208416540

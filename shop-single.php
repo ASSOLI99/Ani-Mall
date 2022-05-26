@@ -1,7 +1,7 @@
 <?php 
 require "./config.php";
 include "navbar.php"; 
-// if(!isset($_SESSION['Uname']) || !isset($_SESSION['Uemail']) || !isset($_SESSION['Uid']) || !isset($_SESSION['Uimage'])){
+// if(!isset($_SESSION['Uname']) || !isset($_SESSION['Uemail']) || !isset($_SESSION['Uid']))){
 
 // }
 
@@ -312,6 +312,7 @@ https://templatemo.com/tm-559-Animall-shop
     </section>
 
     <!-- Close Content start -->
+    
     <?php  
         $sqlc='SELECT * FROM comments WHERE comment_product_id=:prod_id';
         $statementCom=$db->prepare($sqlc);
@@ -350,7 +351,7 @@ https://templatemo.com/tm-559-Animall-shop
                         
                         <li class="media">
                             <a href="#" class="pull-left">
-                                <img src="<?php echo $comment['comment_image'] ?>" alt="" class="img-circle">
+                                <img src="./images/user-image.jpg" alt="" class="img-circle">
                             </a>
                             <div class="media-body">
                                 <!--comment date section not done 

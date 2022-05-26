@@ -1,6 +1,10 @@
 <?php
 /** @var pdo \PDO */
 require_once "./../database.php";
+session_start();
+if(!isset($_SESSION['name']) || !isset($_SESSION['type'])){
+  header("Location: ../../login/index.php");
+}
 $search=$_GET['search'] ?? "";
 if($search){
   $statement=$pdo->prepare("SELECT * FROM products INNER JOIN categories ON products.product_categorie_id = categories.category_id WHERE product_name LIKE :product_name");
@@ -74,6 +78,20 @@ $products=$statement->fetchAll(PDO::FETCH_ASSOC);
                 <a href="../../categorys/public/index.php" class='sidebar-link'>
                     <i class="bi bi-blockquote-left"></i>
                     <span>Categories</span>
+                </a>
+            </li>
+            <li
+                class="sidebar-item">
+                <a href="../../orders.php" class='sidebar-link'>
+                    <i class="bi bi-archive"></i>
+                    <span>Orders</span>
+                </a>
+            </li>
+            <li
+                class="sidebar-item">
+                <a href="../../login/index.php" class='sidebar-link'>
+                    <i class="bi bi-box-arrow-left"></i>
+                    <span>Log Out</span>
                 </a>
             </li>
             

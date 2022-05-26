@@ -9,7 +9,7 @@ if($_SERVER['REQUEST_METHOD']=="POST" && isset($_SESSION['Uid'])){
  $statement->bindValue(':comment', $_POST['theComment']);
  $statement->bindValue(':comment_product_id', $productId);
  $statement->bindValue(':comment_user_id', $_POST['user_id']);
- $statement->bindValue(':comment_img', $_SESSION['Uimage']);
+ $statement->bindValue(':comment_img', "../images/user-image.jpg");
  $statement->bindValue(':comment_name', $_POST['user_name']);
  $statement->execute();
  header("location:../shop-single.php?product=$productId");

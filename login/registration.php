@@ -37,9 +37,9 @@ require('config.php');
             
             
 
-            $sql = "INSERT INTO users (username, email,password, repassword, mobile,location ) VALUES(?,?,?,?,?,?)";
+            $sql = "INSERT INTO users (user_name, user_email, user_password, user_mobile, user_location) VALUES(?,?,?,?,?)";
 		$stmtinsert = $DB->prepare($sql);
-		$result = $stmtinsert->execute([$UserName , $Email , $Password, $Confirm, $Phone, $Location]);
+		$result = $stmtinsert->execute([$UserName, $Email, $Password, $Phone, $Location]);
 		if($result){
 			echo '';
 		}else{

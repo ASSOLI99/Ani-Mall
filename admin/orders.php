@@ -4,11 +4,10 @@
      header("Location: ./login/index.php");
  }
 ?>
-
 <?php 
-$statement=$pdo->prepare("SELECT * FROM users");
+$statement=$pdo->prepare("SELECT * FROM orders");
 $statement->execute();
-$users=$statement->fetchAll(PDO::FETCH_ASSOC);
+$orders=$statement->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,7 +67,7 @@ $users=$statement->fetchAll(PDO::FETCH_ASSOC);
                 </a>
             </li>
             <li
-                class="sidebar-item active">
+                class="sidebar-item">
                 <a href="./users.php" class='sidebar-link'>
                     <i class="bi bi-people"></i>
                     <span>Users</span>
@@ -82,7 +81,7 @@ $users=$statement->fetchAll(PDO::FETCH_ASSOC);
                 </a>
             </li>
             <li
-                class="sidebar-item">
+                class="sidebar-item active">
                 <a href="./orders.php" class='sidebar-link'>
                     <i class="bi bi-archive"></i>
                     <span>Orders</span>
@@ -115,14 +114,14 @@ $users=$statement->fetchAll(PDO::FETCH_ASSOC);
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>DataTable</h3>
+                <h3>Orders</h3>
                 <p class="text-subtitle text-muted">A sortable, searchable, paginated table without dependencies thanks to simple-datatables</p>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="./index.php">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Users</li>
+                        <li class="breadcrumb-item active" aria-current="page">Orders</li>
                     </ol>
                 </nav>
             </div>
@@ -131,34 +130,40 @@ $users=$statement->fetchAll(PDO::FETCH_ASSOC);
     <section class="section">
         <div class="card">
             <div class="card-header">
-                Simple Datatable
+                Orders Table
             </div>
             <div class="card-body">
                 <table class="table table-striped" id="table1">
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Email</th>
-                            <th>Password</th>
-                            <th>City</th>
                             <th>Mobile</th>
+                            <th>Date</th>
+                            <th>location</th>
+                            <th>status</th>
+                            <th>Cash</th>
+                            <th>details</th>
+                            <th>action</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
-                    <?php foreach($users as $i => $user) : ?>
+                    <?php foreach($orders as $i => $order) : ?>
                         <tr>
-                            <td><?php echo $user["user_name"] ?></td>
-                            <td><?php echo $user["user_email"] ?></td>
-                            <td><?php echo $user["user_password"] ?></td>
-                            <td><?php echo $user["user_location"] ?></td>
-                            <td><?php echo $user["user_mobile"] ?></td>
+                            <td><?php echo $order["order_user_name"] ?></td>
+                            <td><?php echo $order["order_mobile"] ?></td>
+                            <td><?php echo $order["order_date"] ?></td>
+                            <td><?php echo $order["order_location"] ?></td>
+                            <td><?php echo $order["order_status"] ?></td>
+                            <td><?php echo $order["order_total"] ?></td>
+                            <td><?php echo $order["order_details"] ?></td>
                             <td>
-                            <form action="./users/delete.php" method="POST" style="display: inline-block;" >
-            <input type="hidden" name="id" value="<?php echo $user["user_id"]?>">
+                            <form action="./orders/delete.php" method="POST" style="display: inline-block;" >
+            <input type="hidden" name="id" value="<?php echo $order["order_id"]?>">
             <button type="submit" class="btn btn-sm btn-danger m-1">Delete</button>
                             </form>
-                            <form action="./users/edit.php" method="GET" style="display: inline-block;" >
-            <input type="hidden" name="id" value="<?php echo $user["user_id"]?>">
+                            <form action="./orders/edit.php" method="GET" style="display: inline-block;" >
+            <input type="hidden" name="id" value="<?php echo $order["order_id"]?>">
             <button type="submit" class="btn btn-sm btn-primary m-1">Edit</button>
                             </form>
                             </td>

@@ -28,7 +28,6 @@ if(isset($_POST['email']) && isset($_POST['password'])){
             if($result[0]['user_password'] == $pass && $result[0]['user_email'] == $email){
                 $_SESSION['Uname'] = $result[0]['user_name'];
                 $_SESSION['Utype'] = $result[0]['user_email'];
-                $_SESSION['Uimage'] = $result[0]['user_image'] ?? " ";
                 $_SESSION['Uid'] = $result[0]['user_id'];
                 $_SESSION['Ulocation'] = $result[0]['user_location'];
                 $_SESSION['Umobile'] = $result[0]['user_mobile'];

@@ -210,7 +210,7 @@ if($_SESSION['signIn']==false){
         $product_details=$Odetails;
         $product_total=$_SESSION['sum'];
         $user_location=$_SESSION['Ulocation'];
-        $order_status="checking";
+        $order_status="Checking";
         $order_mobile=$_SESSION['Umobile'];
         $statement=$db->prepare("INSERT INTO orders (order_details, order_location, order_mobile, order_user_name, order_total, order_status,order_user_id)
         VALUES (:detail, :location, :mobile, :user_name, :total, :status, :user_id)

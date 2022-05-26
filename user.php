@@ -52,7 +52,7 @@ if($_SESSION['signIn']==false){
                    <?php foreach($show as $value): ?> 
                    
                     <div class="mt-3 overflow-hidden" >
-                    <img src="./<?php echo $value['user_image'] ?>" alt="User" width="150px">
+                    <img src="./images/user-image.jpg" alt="User" width="150px">
                       <h4><?php echo $value['user_name'] ?></h4>
                       <p class="text-secondary mb-1">Email : <?php echo $value['user_email'] ?></p>
                       <form action="">
