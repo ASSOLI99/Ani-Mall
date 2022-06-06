@@ -7,7 +7,7 @@
  <a href="https://github.com/salambelal">Salam</a>
  <a href="https://github.com/Marahalkhateeb12">Marah</a>
  
- <h2>💼mockup and wireframe</h2>
+ <h2>💼mockup & wireframe</h2>
  <h4>https://miro.com/welcomeonboard/TEE5ZnNiOXB1OHdPVzRVR25raVozVzBkbTJHRm9EZk55dzdDcWZFTWU2Y2ZPd0ZCSDQ5R003ZVJGRjRvaEZ1SHwzNDU4NzY0NTE5NTcyMjI2NDI3?share_link_id=474424651608</h4>
  
  <h4> 🛠 &nbsp;We use</h4>
